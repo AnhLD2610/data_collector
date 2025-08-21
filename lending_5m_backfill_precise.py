@@ -107,7 +107,7 @@ def get_price_series_usd(start_ts: int, end_ts: int, coin_id: str = "hyperliquid
 				price_map[bucket] = price
 		return price_map
 	except Exception as e:
-		print(f"⚠️ Could not fetch price series: {e}")
+		print(f"Could not fetch price series: {e}")
 		return {}
 
 class ProtocolConfig:
@@ -288,7 +288,7 @@ def main():
 	for i, anchor_ts in enumerate(anchors):
 		# Before making state calls, check budget for this anchor (2 per protocol)
 		if bf.archived_calls_used + (len(bf.protocols()) * 2) > args.daily_archived_budget:
-			print(f"⏹Budget reached ({bf.archived_calls_used}/{args.daily_archived_budget}). Stop and resume tomorrow.")
+			print(f"Budget reached ({bf.archived_calls_used}/{args.daily_archived_budget}). Stop and resume tomorrow.")
 			break
 		try:
 			block_refined = bf.refine_block_for_ts(anchor_ts)
